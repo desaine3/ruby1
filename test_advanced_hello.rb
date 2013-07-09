@@ -20,15 +20,14 @@ end
 describe 'advanced_hello' do
 	it "works for a random name" do
 		ProcessPilot::pilot('advanced_hello.rb', :force_ruby_process_sync => true, :debug=> true) do |oStdin, iStdout|
-		  	puts iStdout.readpartial(100) # => "Enter your name: "
+		  	iStdout.readpartial(100) # => "Enter your name: "
 		  	oStdin.write("daVE\n")
-		  	puts iStdout.readpartial(100) # => What is your home town?
+		  	iStdout.readpartial(100) # => What is your home town?
 		  	oStdin.write("vienna\n")
-		  	puts "input"
-		  	puts iStdout.readpartial(100) # => What country is that in?
+		  	iStdout.readpartial(100) # => What country is that in?
 		  	oStdin.write("austria\n")
-		  	puts output =  iStdout.gets.chomp # => "Hello Boris the newt"
-		  	assert_equal output, "Hello Dave! You are from Vienna, AUSTRIA."
+		  	output =  iStdout.gets.chomp # => "Hello Boris the newt"
+		  	assert_equal "Hello Dave! You are from Vienna, AUSTRIA.", output
 
 		end
 
