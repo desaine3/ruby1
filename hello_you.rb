@@ -5,6 +5,9 @@ name = gets
 # chomp is a method that will remove any newline characters from the end of our string 
 name = name.chomp
 
+name = "Hello #{name}"
+#name = 'Hello ' + name
+
 puts name
 
 
